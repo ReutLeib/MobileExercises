@@ -50,4 +50,5 @@ public class MainActivity extends AppCompatActivity {
     public void OnCalc(android.view.View view){
        startActivity(new android.content.Intent(this, com.shenkar.reutleib.reutmobile.CalculatorActivity.class));
     }
+
 }
