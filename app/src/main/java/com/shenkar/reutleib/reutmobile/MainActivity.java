@@ -42,4 +42,12 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MyAdapter(myDataset.toArray(new String[myDataset.size()] ));
         mRecyclerView.setAdapter(mAdapter);
     }
+
+    public void OnBirth(android.view.View view){
+        startActivity(new android.content.Intent(this, com.shenkar.reutleib.reutmobile.BirthdayActivity.class));
+    }
+
+    public void OnCalc(android.view.View view){
+       startActivity(new android.content.Intent(this, com.shenkar.reutleib.reutmobile.CalculatorActivity.class));
+    }
 }
