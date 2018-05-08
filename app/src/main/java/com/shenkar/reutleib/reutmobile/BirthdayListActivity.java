@@ -28,7 +28,7 @@ public class BirthdayListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(com.shenkar.reutleib.reutmobile.R.layout.activity_birthday_list);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.birthdayList);
+        mRecyclerView = findViewById(R.id.birthdayList);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
