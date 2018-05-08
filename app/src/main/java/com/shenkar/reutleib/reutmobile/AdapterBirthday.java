@@ -6,11 +6,17 @@ package com.shenkar.reutleib.reutmobile;
 import android.support.v7.widget.RecyclerView;
 import android.view.*;
 import android.widget.*;
+
+import com.shenkar.reutleib.reutmobile.model.BirthdayEntity;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 public class AdapterBirthday extends RecyclerView.Adapter<AdapterBirthday.ViewHolder> {
 
-    private Date[] mDataset;
+
+    private ArrayList<BirthdayEntity> mDataset;
+
 
 
     // Provide a reference to the views for each data item
@@ -18,17 +24,19 @@ public class AdapterBirthday extends RecyclerView.Adapter<AdapterBirthday.ViewHo
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public android.widget.TextView mDateView;
-        public ViewHolder(android.view.ViewGroup v) {
+        public TextView mDateView;
+        public TextView mNameView;
+        public ViewHolder(ViewGroup v) {
             super(v);
-            android.widget.TextView tv =  v.findViewById(com.shenkar.reutleib.reutmobile.R.id.dateText);
-
+            android.widget.TextView tv =  v.findViewById(R.id.dateText);
+            android.widget.TextView tvName =  v.findViewById(R.id.TextViewName);
+            mNameView = tvName;
             mDateView = tv;
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AdapterBirthday(Date[] myDataset) {
+    public AdapterBirthday(ArrayList<BirthdayEntity> myDataset) {
         mDataset = myDataset;
     }
 
@@ -43,11 +51,12 @@ public class AdapterBirthday extends RecyclerView.Adapter<AdapterBirthday.ViewHo
 
     @Override
     public void onBindViewHolder(AdapterBirthday.ViewHolder holder, int position) {
-        holder.mDateView.setText(mDataset[position].toString());
+        holder.mDateView.setText(mDataset.get(position).date);
+        holder.mNameView.setText(mDataset.get(position).name);
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();
     }
 }

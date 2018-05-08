@@ -37,7 +37,7 @@ public abstract class BirthdayDb extends RoomDatabase{
     public abstract BirthdayDao getBirthdayDao();
 
     //this func reads the records from our db
-    public LiveData<List<BirthdayEntity>> readCaptainsLog() {
+    public LiveData<List<BirthdayEntity>> readBday() {
         LiveData<List<BirthdayEntity>> captainsLogEntities = getBirthdayDao().loadBirthday();
         return captainsLogEntities;
     }

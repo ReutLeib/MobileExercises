@@ -10,7 +10,17 @@
 
     <TextView
         android:id="@+id/dateText"
-        android:layout_width="match_parent"
+        android:layout_width="173dp"
         android:layout_height="137dp"
         android:gravity="center" />
+
+    <TextView
+        android:id="@+id/TextViewName"
+        android:layout_width="173dp"
+        android:layout_height="137dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dateText" />
 </android.support.constraint.ConstraintLayout>
