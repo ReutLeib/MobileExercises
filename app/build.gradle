@@ -54,4 +54,6 @@ dependencies {
 
     //debug db
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.3'
+
+    implementation 'joda-time:joda-time:2.9.4'
 }

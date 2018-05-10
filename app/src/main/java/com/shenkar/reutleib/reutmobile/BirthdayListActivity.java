@@ -2,17 +2,20 @@ package com.shenkar.reutleib.reutmobile;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
+import android.os.Build.VERSION_CODES;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.*;
+import android.widget.Toast;
 
 import com.shenkar.reutleib.reutmobile.model.BirthdayDb;
 import com.shenkar.reutleib.reutmobile.model.BirthdayEntity;
 
-import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,14 +29,6 @@ public class BirthdayListActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-
-    private java.util.ArrayList<Date> birth = new java.util.ArrayList<Date>() {{
-        add(new Date(2018,1,1));
-        add(new Date(2018,1,2));
-        add(new Date(2018,1,3));
-        add(new Date(2018,1,4));
-        add(new Date(2018,1,5));
-    }};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +55,25 @@ public class BirthdayListActivity extends AppCompatActivity {
         // Create the observer which updates the UI.
         final Observer<List<BirthdayEntity>> logObserver = new Observer<List<BirthdayEntity>>() {
 
+            @RequiresApi(api = VERSION_CODES.N)
             @Override
             public void onChanged(@Nullable final List<BirthdayEntity> newLog) {
                 // Update the UI, in this case, a TextView.
-                //todo: add bday to list here!
-                BirthdayListActivity.addBirthday(gName,gDate);
-                mAdapter.notifyDataSetChanged();
+                if(newLog.isEmpty()){
+                    Toast.makeText(BirthdayListActivity.this, "Empty",Toast.LENGTH_LONG).show();
+                }
+                for(BirthdayEntity b: newLog) {
+                    boolean inList = false;
+                    for (BirthdayEntity bday: bList) {
+                        if(bday.id == b.id) {
+                            inList=true;
+                            break;
+                        }
+                    }
+                    if(!inList)
+                        bList.add(b);
+                    mAdapter.notifyDataSetChanged();
+                }
 
             }
         };
@@ -73,12 +81,12 @@ public class BirthdayListActivity extends AppCompatActivity {
         LiveData<List<BirthdayEntity>> BdayLiveData = BirthdayDb.getInstance(this).readBday();
         BdayLiveData.observe(this, logObserver);
 
-        // TODO: test if work !
+
         mAdapter.notifyDataSetChanged();
     }
 
+
     public static void addBirthday(String name, String data){
         bList.add(new BirthdayEntity(data,name));
-        //todo: add sort!!!!
     }
 }
