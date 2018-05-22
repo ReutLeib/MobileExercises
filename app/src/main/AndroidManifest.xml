@@ -16,12 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".BirthdayActivity" />
         <activity android:name=".BirthdayListActivity" />
-        <activity android:name=".CalculatorActivity"></activity>
-
-
+        <activity android:name=".CalculatorActivity" />
+        <!-- <activity android:name=".Activity_Animation001_Layout" /> -->
+        <activity android:name=".activity_animation01" />
+        <activity android:name=".activity_animation1"></activity>
     </application>
 
 </manifest>

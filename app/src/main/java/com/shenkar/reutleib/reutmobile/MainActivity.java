@@ -1,5 +1,6 @@
 package com.shenkar.reutleib.reutmobile;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.*;
@@ -49,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void OnCalc(android.view.View view){
        startActivity(new android.content.Intent(this, com.shenkar.reutleib.reutmobile.CalculatorActivity.class));
+    }
+
+    public void OnAnimation(android.view.View view){
+//        startActivity(new android.content.Intent(this, activity_animation1.class));
+        startActivity(new android.content.Intent(this, activity_animation01.class));
+
     }
 
 }
