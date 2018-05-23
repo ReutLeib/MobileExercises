@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private java.util.ArrayList<String> myDataset = new java.util.ArrayList<String>() {{
         add("Calculator");
         add("Birthday");
-        add("item3");
+        add("Animation");
         add("item4");
         add("item5");
         add("item6");
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnAnimation(android.view.View view){
-//        startActivity(new android.content.Intent(this, activity_animation1.class));
-        startActivity(new android.content.Intent(this, activity_animation01.class));
+        startActivity(new android.content.Intent(this, activity_animation1.class));
+//        startActivity(new android.content.Intent(this, activity_animation01.class));
 
     }
 
